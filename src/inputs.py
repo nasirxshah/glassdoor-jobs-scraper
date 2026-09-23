@@ -19,7 +19,7 @@ from .glassdoor_client import BASE_URLS, FILTER_OPTIONS, MAX_LIMIT
 #: How many jobs a run collects when `maxJobs` is left empty, and the most it
 #: may ask for. The ceiling is the client's `MAX_LIMIT`, a bound on one run's
 #: size -- not a measured Glassdoor limit.
-DEFAULT_MAX_JOBS = 100
+DEFAULT_MAX_JOBS = 1000
 MAX_JOBS = MAX_LIMIT
 
 

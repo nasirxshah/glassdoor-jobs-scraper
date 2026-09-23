@@ -6,7 +6,7 @@ Give it a keyword and a place, and get back every matching Glassdoor job as a
 flat row: title, company, location, pay range, company rating, posting age and
 apply link.
 
-A default run of 100 jobs takes a few seconds.
+A default run collects up to 1,000 jobs, well under a minute of requests.
 
 ## What you can do with it
 
@@ -43,7 +43,7 @@ sees. It never signs in.
 | **Keyword** | required | A job title, skill or company, e.g. `software engineer`, `nurse`, `Google`. |
 | **Location** | United States | A city, state or country as you would type it on Glassdoor. |
 | **Glassdoor site** | glassdoor.com | Which of Glassdoor's 23 regional sites to search through. The jobs and their currency follow the location, not the site. Pick the local site when you type a local place name, e.g. `Ciudad de México` on glassdoor.com.mx. |
-| **Max jobs** | 100 | Where the run stops. Up to 1,000. |
+| **Max jobs** | 1,000 | Where the run stops. 1,000 is also the most per run. |
 
 **Filters** (all optional): posted within, remote only, Easy Apply only, minimum
 company rating, search radius, job type, seniority, minimum and maximum salary,

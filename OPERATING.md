@@ -57,7 +57,7 @@ The retry handling stays, for search and the location lookup:
 - **A block that would outlast the run is not waited out.** The run ends with
   what it has, with the outcome `blocked`.
 
-**Measured on Apify, from its own IPs (build 0.1.5):** 100 jobs, the default
+**Measured on Apify, from its own IPs (build 0.1.5):** 100 jobs, then the default
 input, in 7.5s: 5 requests, no rate limit, 56 MB peak.
 
 ## Monetization

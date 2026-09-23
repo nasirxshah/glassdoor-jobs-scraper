@@ -49,9 +49,9 @@ def test_bad_input_is_refused_with_the_field_named(raw, fragment):
         parse_input(raw)
 
 
-def test_defaults_are_100_jobs_and_no_filters():
+def test_defaults_are_1000_jobs_and_no_filters():
     c = parse_input({"keyword": " data engineer "})
-    assert c.keyword == "data engineer" and c.max_jobs == 100
+    assert c.keyword == "data engineer" and c.max_jobs == 1000
     assert c.filters == {} and not c.warnings
 
 
