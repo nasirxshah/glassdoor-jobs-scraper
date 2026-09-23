@@ -1,0 +1,12 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+storage/
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+proxies.json
+sample.html
+proxies.txt

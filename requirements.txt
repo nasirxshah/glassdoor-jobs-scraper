@@ -1,0 +1,8 @@
+# Runtime dependencies, pinned to a minor series.
+#
+# primp is not interchangeable with requests or httpx here: it impersonates a
+# browser's TLS fingerprint, which is the only reason Glassdoor answers at all.
+# Measured from a datacenter IP: primp/safari_26 answered 15/15 requests where
+# curl_cffi managed 0/4 and requests/httpx were challenged every time.
+apify ~= 4.0
+primp ~= 2.0

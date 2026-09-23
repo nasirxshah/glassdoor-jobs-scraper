@@ -1,0 +1,240 @@
+{
+  "actorSpecification": 1,
+  "fields": {
+    "title": "Glassdoor job",
+    "description": "One item per job found, flat.",
+    "type": "object",
+    "properties": {
+      "age_in_days": {
+        "type": [
+          "integer",
+          "null"
+        ],
+        "description": "Days since the job was posted; 0 means today."
+      },
+      "company_id": {
+        "type": [
+          "integer",
+          "null"
+        ],
+        "description": "Glassdoor's employer id. Empty when the company has no Glassdoor profile."
+      },
+      "company_logo_url": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "description": "The company's logo."
+      },
+      "company_name": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "description": "Full company name."
+      },
+      "company_rating": {
+        "type": [
+          "number",
+          "null"
+        ],
+        "description": "Overall company rating out of 5."
+      },
+      "company_url_overview": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "description": "The company's Glassdoor profile page."
+      },
+      "country_id": {
+        "type": [
+          "integer",
+          "null"
+        ],
+        "description": "Glassdoor's country id; 1 is the United States."
+      },
+      "easy_apply": {
+        "type": [
+          "boolean",
+          "null"
+        ],
+        "description": "Whether the job can be applied to through Glassdoor."
+      },
+      "expired": {
+        "type": [
+          "boolean",
+          "null"
+        ],
+        "description": "Whether the posting has closed."
+      },
+      "job_application_link": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "description": "Short link to the same listing."
+      },
+      "job_link": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "description": "Glassdoor's own tracking link for the result, as a full URL."
+      },
+      "job_location": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "description": "Where the job is, e.g. 'New York, NY'."
+      },
+      "job_posting_id": {
+        "type": [
+          "integer",
+          "null"
+        ],
+        "description": "Glassdoor's own id for the posting. Unique; de-duplicate on this."
+      },
+      "job_snippet": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "description": "The first lines of the description, as the search results show them."
+      },
+      "job_title": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "description": "The job title as posted."
+      },
+      "location_id": {
+        "type": [
+          "integer",
+          "null"
+        ],
+        "description": "Glassdoor's id for that place; reusable as a search location."
+      },
+      "location_type": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "description": "C for city, S for state, N for country, M for metro area."
+      },
+      "pay_max": {
+        "type": [
+          "number",
+          "null"
+        ],
+        "description": "Top of the pay range."
+      },
+      "pay_median": {
+        "type": [
+          "number",
+          "null"
+        ],
+        "description": "Midpoint of the pay range."
+      },
+      "pay_min": {
+        "type": [
+          "number",
+          "null"
+        ],
+        "description": "Bottom of the pay range."
+      },
+      "pay_range_currency": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "description": "Currency of the pay range, e.g. USD."
+      },
+      "pay_source": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "description": "EMPLOYER_PROVIDED means the employer stated the range; anything else is Glassdoor's estimate."
+      },
+      "pay_type": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "description": "ANNUAL or HOURLY. Check this before comparing two pay figures."
+      },
+      "search_keyword": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "description": "The keyword whose search returned this job."
+      },
+      "sponsored": {
+        "type": [
+          "boolean",
+          "null"
+        ],
+        "description": "Whether the employer paid for this placement."
+      },
+      "timestamp": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "description": "When the job was scraped, in UTC."
+      },
+      "url": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "description": "Long, human-readable link to the listing on Glassdoor."
+      }
+    }
+  },
+  "views": {
+    "overview": {
+      "title": "Overview",
+      "transformation": {
+        "fields": [
+          "job_title",
+          "company_name",
+          "job_location",
+          "pay_min",
+          "pay_max",
+          "pay_type",
+          "company_rating",
+          "age_in_days",
+          "easy_apply",
+          "job_application_link",
+          "url"
+        ]
+      },
+      "display": {
+        "component": "table"
+      }
+    },
+    "company": {
+      "title": "Company",
+      "transformation": {
+        "fields": [
+          "company_name",
+          "company_rating",
+          "job_title",
+          "job_location",
+          "pay_min",
+          "pay_max",
+          "pay_type",
+          "company_url_overview"
+        ]
+      },
+      "display": {
+        "component": "table"
+      }
+    }
+  }
+}

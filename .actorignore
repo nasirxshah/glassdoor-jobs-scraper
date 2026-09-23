@@ -1,0 +1,14 @@
+# Not uploaded by `apify push`. The CLI applies .gitignore only inside a git
+# repository, and this folder is not one, so everything private is listed here.
+proxies.txt
+proxies.json
+.env
+storage
+.venv
+venv
+__pycache__
+*.py[cod]
+.pytest_cache
+.ruff_cache
+*.egg-info
+sample.html

@@ -1,0 +1,347 @@
+{
+  "title": "Glassdoor Jobs",
+  "description": "Search Glassdoor for one keyword in one location. Every filter here is one Glassdoor applies to the search itself, so a filtered run scrapes less and finishes sooner.",
+  "type": "object",
+  "schemaVersion": 1,
+  "properties": {
+    "keyword": {
+      "title": "Keyword",
+      "type": "string",
+      "editor": "textfield",
+      "description": "A job title, skill or company name to search for, e.g. \"software engineer\".",
+      "prefill": "software engineer",
+      "sectionCaption": "What to search",
+      "sectionDescription": "One search per run, in the location below."
+    },
+    "location": {
+      "title": "Location",
+      "type": "string",
+      "description": "A city, state or country as you would type it on Glassdoor — \"New York\", \"California\", \"United Kingdom\". Resolved to Glassdoor's own place id before searching; if nothing matches, the run stops and says so.",
+      "editor": "textfield",
+      "default": "United States",
+      "prefill": "United States"
+    },
+    "domain": {
+      "title": "Glassdoor site",
+      "type": "string",
+      "description": "The regional Glassdoor to search through. The jobs you get, and their currency, follow the Location, not this. What it changes is how place names are read: a local site knows local names, e.g. 'Ciudad de México' on glassdoor.com.mx. Links mostly point to this site.",
+      "editor": "select",
+      "default": "https://www.glassdoor.com",
+      "enum": [
+        "https://www.glassdoor.com",
+        "https://www.glassdoor.com.ar",
+        "https://www.glassdoor.com.au",
+        "https://www.glassdoor.at",
+        "https://nl.glassdoor.be",
+        "https://fr.glassdoor.be",
+        "https://www.glassdoor.com.br",
+        "https://www.glassdoor.ca",
+        "https://fr.glassdoor.ca",
+        "https://www.glassdoor.fr",
+        "https://www.glassdoor.de",
+        "https://www.glassdoor.com.hk",
+        "https://www.glassdoor.co.in",
+        "https://www.glassdoor.ie",
+        "https://www.glassdoor.it",
+        "https://www.glassdoor.com.mx",
+        "https://www.glassdoor.nl",
+        "https://www.glassdoor.co.nz",
+        "https://www.glassdoor.sg",
+        "https://www.glassdoor.es",
+        "https://fr.glassdoor.ch",
+        "https://de.glassdoor.ch",
+        "https://www.glassdoor.co.uk"
+      ],
+      "enumTitles": [
+        "United States (glassdoor.com)",
+        "Argentina (glassdoor.com.ar)",
+        "Australia (glassdoor.com.au)",
+        "Austria (glassdoor.at)",
+        "Belgium, Dutch (nl.glassdoor.be)",
+        "Belgium, French (fr.glassdoor.be)",
+        "Brazil (glassdoor.com.br)",
+        "Canada (glassdoor.ca)",
+        "Canada, French (fr.glassdoor.ca)",
+        "France (glassdoor.fr)",
+        "Germany (glassdoor.de)",
+        "Hong Kong (glassdoor.com.hk)",
+        "India (glassdoor.co.in)",
+        "Ireland (glassdoor.ie)",
+        "Italy (glassdoor.it)",
+        "Mexico (glassdoor.com.mx)",
+        "Netherlands (glassdoor.nl)",
+        "New Zealand (glassdoor.co.nz)",
+        "Singapore (glassdoor.sg)",
+        "Spain (glassdoor.es)",
+        "Switzerland, French (fr.glassdoor.ch)",
+        "Switzerland, German (de.glassdoor.ch)",
+        "United Kingdom (glassdoor.co.uk)"
+      ]
+    },
+    "maxJobs": {
+      "title": "Max jobs",
+      "type": "integer",
+      "editor": "number",
+      "description": "Stop after this many jobs. 100 by default, up to 1,000 per run.",
+      "minimum": 1,
+      "maximum": 1000,
+      "default": 100,
+      "prefill": 100,
+      "unit": "jobs"
+    },
+    "daysOld": {
+      "title": "Posted within",
+      "type": "string",
+      "description": "Only jobs posted in the last N days.",
+      "editor": "select",
+      "enum": [
+        "",
+        "1",
+        "3",
+        "7",
+        "14",
+        "30"
+      ],
+      "enumTitles": [
+        "Any time",
+        "Last 24 hours",
+        "Last 3 days",
+        "Last week",
+        "Last 2 weeks",
+        "Last month"
+      ],
+      "default": "",
+      "sectionCaption": "Filters",
+      "sectionDescription": "All applied by Glassdoor during the search. Leave a filter empty to not use it."
+    },
+    "remoteOnly": {
+      "title": "Remote only",
+      "type": "boolean",
+      "description": "Return only remote jobs. This is \"remote only\", not \"include remote\".",
+      "editor": "checkbox",
+      "default": false
+    },
+    "easyApplyOnly": {
+      "title": "Easy Apply only",
+      "type": "boolean",
+      "description": "Return only jobs you can apply to through Glassdoor.",
+      "editor": "checkbox",
+      "default": false
+    },
+    "minRating": {
+      "title": "Minimum company rating",
+      "type": "string",
+      "description": "Only companies rated at least this, out of 5.",
+      "editor": "select",
+      "enum": [
+        "",
+        "1",
+        "2",
+        "3",
+        "4"
+      ],
+      "enumTitles": [
+        "Any rating",
+        "1.0 and up",
+        "2.0 and up",
+        "3.0 and up",
+        "4.0 and up"
+      ],
+      "default": ""
+    },
+    "radiusMiles": {
+      "title": "Search radius",
+      "type": "string",
+      "description": "Distance around the location. Metric Glassdoor sites label the same numbers in kilometres.",
+      "editor": "select",
+      "enum": [
+        "",
+        "0",
+        "5",
+        "10",
+        "15",
+        "25",
+        "50",
+        "100"
+      ],
+      "enumTitles": [
+        "Default",
+        "Exact location",
+        "5 miles",
+        "10 miles",
+        "15 miles",
+        "25 miles",
+        "50 miles",
+        "100 miles"
+      ],
+      "default": ""
+    },
+    "jobType": {
+      "title": "Job type",
+      "type": "string",
+      "description": "Employment type.",
+      "editor": "select",
+      "enum": [
+        "",
+        "fulltime",
+        "parttime",
+        "contract",
+        "internship",
+        "temporary",
+        "apprenticeship",
+        "entrylevel"
+      ],
+      "enumTitles": [
+        "Any",
+        "Full-time",
+        "Part-time",
+        "Contract",
+        "Internship",
+        "Temporary",
+        "Apprenticeship",
+        "Entry level"
+      ],
+      "default": ""
+    },
+    "seniority": {
+      "title": "Seniority",
+      "type": "string",
+      "description": "Level of the role.",
+      "editor": "select",
+      "enum": [
+        "",
+        "entrylevel",
+        "midseniorlevel",
+        "director",
+        "executive"
+      ],
+      "enumTitles": [
+        "Any",
+        "Entry level",
+        "Mid / senior level",
+        "Director",
+        "Executive"
+      ],
+      "default": ""
+    },
+    "minSalary": {
+      "title": "Minimum salary",
+      "type": "integer",
+      "description": "Lower bound on pay, in the site's own currency.",
+      "editor": "number",
+      "minimum": 0
+    },
+    "maxSalary": {
+      "title": "Maximum salary",
+      "type": "integer",
+      "description": "Upper bound on pay, in the site's own currency.",
+      "editor": "number",
+      "minimum": 0
+    },
+    "employerSize": {
+      "title": "Company size",
+      "type": "string",
+      "description": "Headcount band of the hiring company.",
+      "editor": "select",
+      "enum": [
+        "",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "enumTitles": [
+        "Any size",
+        "1 to 50",
+        "51 to 200",
+        "201 to 500",
+        "501 to 1000",
+        "1001 and more"
+      ],
+      "default": ""
+    },
+    "industry": {
+      "title": "Industry",
+      "type": "string",
+      "description": "Industry of the hiring company.",
+      "editor": "select",
+      "enum": [
+        "",
+        "10013",
+        "10006",
+        "10026",
+        "10010",
+        "10012",
+        "10015",
+        "10016",
+        "10022"
+      ],
+      "enumTitles": [
+        "Any industry",
+        "Information technology",
+        "Management and consulting",
+        "Human resources and staffing",
+        "Finance",
+        "Healthcare",
+        "Manufacturing",
+        "Media and communication",
+        "Retail and wholesale"
+      ],
+      "default": ""
+    },
+    "jobFunction": {
+      "title": "Department",
+      "type": "string",
+      "description": "Function the role sits in.",
+      "editor": "select",
+      "enum": [
+        "",
+        "1007",
+        "1011",
+        "1003",
+        "1018",
+        "1019",
+        "1002",
+        "1001",
+        "1004"
+      ],
+      "enumTitles": [
+        "Any department",
+        "Engineering",
+        "Information technology",
+        "Business",
+        "Product and project management",
+        "Research and science",
+        "Arts and design",
+        "Administrative",
+        "Consulting"
+      ],
+      "default": ""
+    },
+    "companyId": {
+      "title": "Company ID",
+      "type": "integer",
+      "description": "Restrict the search to one employer, by its Glassdoor id — the number in an Overview URL, e.g. 40772 in /Overview/...IE40772.htm.",
+      "editor": "number",
+      "minimum": 1
+    },
+    "sortBy": {
+      "title": "Sort by",
+      "type": "string",
+      "description": "Order Glassdoor returns results in.",
+      "editor": "select",
+      "enum": [
+        "relevant_desc",
+        "date_desc",
+        "date_asc"
+      ],
+      "enumTitles": [
+        "Most relevant",
+        "Newest first",
+        "Oldest first"
+      ],
+      "default": "relevant_desc"
+    }
+  }
+}

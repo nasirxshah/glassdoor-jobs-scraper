@@ -1,0 +1,23 @@
+{
+  "actorSpecification": 1,
+  "name": "glassdoor-jobs-scraper",
+  "title": "Glassdoor Jobs Scraper - Pay, Ratings & Apply Links",
+  "description": "Search Glassdoor by keyword and location with the filters the site itself applies: date posted, remote, salary, rating, company size, seniority. Flat rows with pay, company rating and apply links.",
+  "version": "0.1",
+  "buildTag": "latest",
+  "meta": {
+    "templateId": "python-start"
+  },
+  "input": "./input_schema.json",
+  "output": "./output_schema.json",
+  "dockerfile": "./Dockerfile",
+  "storages": {
+    "dataset": "./dataset_schema.json"
+  },
+  "minMemoryMbytes": 256,
+  "maxMemoryMbytes": 256,
+  "environmentVariables": {
+    "ZYRA_ADMIN_URL": "https://zyra.keavix.com",
+    "ZYRA_ADMIN_KEY": "@zyraAdminKeyGlassdoor"
+  }
+}

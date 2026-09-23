@@ -1,0 +1,19 @@
+{
+  "actorOutputSchemaVersion": 1,
+  "title": "Glassdoor jobs",
+  "description": "Where a finished run puts what it scraped.",
+  "properties": {
+    "jobs": {
+      "type": "string",
+      "title": "Jobs",
+      "description": "Every job scraped, one item each.",
+      "template": "{{links.apiDefaultDatasetUrl}}/items"
+    },
+    "runSummary": {
+      "type": "string",
+      "title": "Run summary",
+      "description": "What was requested, where Glassdoor searched, what arrived, how many requests it took and what was charged.",
+      "template": "{{links.apiDefaultKeyValueStoreUrl}}/records/OUTPUT"
+    }
+  }
+}
